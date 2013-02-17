@@ -42,3 +42,5 @@ server {
 
 
 sudo service nginx start 
+
+If service doesn't exist follow http://wiki.nginx.org/Nginx-init-ubuntu
