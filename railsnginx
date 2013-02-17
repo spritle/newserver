@@ -14,6 +14,8 @@ sudo apt-get --no-install-recommends install build-essential openssl libreadline
 
 sudo apt-get install libxml2-dev libxslt-dev autoconf libc6-dev libgdbm-dev ncurses-dev automake libtool bison subversion pkg-config libffi-dev
 
+sudo apt-get install libcurl4-openssl-dev
+
 rvm install ruby
 
 rvm use 1.9.3 --default
@@ -21,3 +23,22 @@ rvm use 1.9.3 --default
 rvm rubygems current
 
 gem install rails --no-ri --no-rdoc
+
+gem install passenger
+
+export rvmsudo_secure_path=1
+
+rvmsudo passenger-install-nginx-module
+
+rails new webapp1
+
+sudo nano /opt/nginx/conf/nginx.conf
+server { 
+  listen 80; 
+  server_name example.com; 
+  passenger_enabled on; 
+  root /home/root/webapp1/public; 
+}
+
+
+sudo service nginx start 
