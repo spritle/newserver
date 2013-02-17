@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+echo "Update ubuntu .."
+sudo apt-get update -y
+
+echo "install rvm"
+bash -s stable < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer) 
+
+logout
+
+rvm requirements
+
+sudo apt-get --no-install-recommends install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 
+
+sudo apt-get install libxml2-dev libxslt-dev autoconf libc6-dev libgdbm-dev ncurses-dev automake libtool bison subversion pkg-config libffi-dev
+
+rvm install ruby
+
+rvm use 1.9.3 --default
+
+rvm rubygems current
+
+gem install rails --no-ri --no-rdoc
