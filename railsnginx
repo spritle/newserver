@@ -20,7 +20,8 @@ sudo apt-get install libxml2-dev libxslt-dev autoconf libc6-dev libgdbm-dev ncur
 
 sudo apt-get install libcurl4-openssl-dev
 
-rvm install ruby
+echo "Install ruby 1.9.3 unless you want ruby 2.0"
+rvm install 1.9.3
 
 rvm use 1.9.3 --default
 
