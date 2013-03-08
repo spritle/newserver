@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
-echo "Update ubuntu .."
+echo "Update ubuntu and then upgrade...."
 sudo apt-get update -y
+sudo apt-get upgrade
+
+echo "install fail2ban"
+sudo apt-get install fail2ban
 
 echo "install rvm"
 bash -s stable < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer) 
