@@ -1,25 +1,18 @@
 #!/usr/bin/env bash
 
-echo "Update ubuntu and then upgrade...."
-sudo apt-get update -y
-sudo apt-get upgrade
-
-echo "install fail2ban"
-sudo apt-get install fail2ban
+# Do 5 minutes stuff
 
 echo "install rvm system wide rvm"
-#bash -s stable < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer) 
 sudo \curl -L https://get.rvm.io | sudo bash
 
-logout
+echo "set rvm at /etc/sudoers"
+export rvmsudo_secure_path=1
 
-rvm requirements
+echo "install required softwares"
+rvmsudo rvm requirements
 
-sudo apt-get --no-install-recommends install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 
 
-sudo apt-get install libxml2-dev libxslt-dev autoconf libc6-dev libgdbm-dev ncurses-dev automake libtool bison subversion pkg-config libffi-dev
-
-sudo apt-get install libcurl4-openssl-dev
+sudo apt-get openssl libreadline6 libreadline6-dev libssl-dev sqlite3 
 
 echo "Install ruby 1.9.3 unless you want ruby 2.0"
 rvm install 1.9.3
